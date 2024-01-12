@@ -1,8 +1,12 @@
+import { Exclude } from 'class-transformer'
+
 export class UserPreference {
-  constructor(
-    public language: string,
-    public createdAt: Date,
-    public updatedAt: Date
-  ) { }
+  language: string
   theme: string
+  @Exclude() createdAt: Date
+  @Exclude() updatedAt: Date
+
+  constructor(data: UserPreference) {
+    Object.assign(this, data)
+  }
 }

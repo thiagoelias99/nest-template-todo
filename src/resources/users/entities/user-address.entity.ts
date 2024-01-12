@@ -1,9 +1,13 @@
+import { Exclude } from 'class-transformer'
+
 export class UserAddress {
-  constructor(
-    public country: string,
-    public createdAt: Date,
-    public updatedAt: Date
-  ) { }
+  country: string
   city?: string
   state?: string
+  @Exclude() createdAt: Date
+  @Exclude() updatedAt: Date
+
+  constructor(data: UserAddress) {
+    Object.assign(this, data)
+  }
 }
