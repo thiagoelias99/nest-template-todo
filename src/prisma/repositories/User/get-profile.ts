@@ -12,8 +12,5 @@ export async function getProfileQuery(userId: string, prisma: PrismaService): Pr
       Preferences: true
     }
   })
-
-  console.log(userFromDb) 
-
   return userToEntityDto(userFromDb)
 }

@@ -17,8 +17,8 @@ CREATE TABLE "users" (
 -- CreateTable
 CREATE TABLE "user_addresses" (
     "id" TEXT NOT NULL PRIMARY KEY,
-    "city" TEXT,
-    "state" TEXT,
+    "city" TEXT NOT NULL,
+    "state" TEXT NOT NULL,
     "country" TEXT NOT NULL,
     "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" DATETIME NOT NULL
@@ -27,7 +27,7 @@ CREATE TABLE "user_addresses" (
 -- CreateTable
 CREATE TABLE "user_preferences" (
     "id" TEXT NOT NULL PRIMARY KEY,
-    "theme" TEXT,
+    "theme" TEXT NOT NULL DEFAULT 'default',
     "language" TEXT NOT NULL,
     "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" DATETIME NOT NULL

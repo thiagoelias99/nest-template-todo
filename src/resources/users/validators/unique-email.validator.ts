@@ -19,10 +19,8 @@ export class UniqueEmailValidator implements ValidatorConstraintInterface {
   ): Promise<boolean> {
     try {
       const user = await this.usersService.findByEmail(value)
-      console.log(user)
       return !user
     } catch (error) {
-      console.log(error)
       return false
     }
   }
