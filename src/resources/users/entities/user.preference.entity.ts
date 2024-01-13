@@ -1,15 +1,5 @@
+import { ApiProperty } from '@nestjs/swagger'
 import { Exclude } from 'class-transformer'
-
-export class UserPreference {
-  language: UserPreferenceLanguage
-  theme: UserPreferenceTheme
-  @Exclude() createdAt: Date
-  @Exclude() updatedAt: Date
-
-  constructor(data: UserPreference) {
-    Object.assign(this, data)
-  }
-}
 
 export enum UserPreferenceLanguage {
   EN = 'en',
@@ -20,4 +10,16 @@ export enum UserPreferenceLanguage {
 export enum UserPreferenceTheme {
   DEFAULT = 'default',
   DARK = 'dark'
+}
+
+export class UserPreference {
+  @ApiProperty({ example: 'pt-br', enum: UserPreferenceLanguage}) language: UserPreferenceLanguage
+  @ApiProperty({ example: 'default' }) theme: UserPreferenceTheme
+  @Exclude() createdAt: Date
+  @Exclude() updatedAt: Date
+  @Exclude() id: string
+
+  constructor(data: UserPreference) {
+    Object.assign(this, data)
+  }
 }

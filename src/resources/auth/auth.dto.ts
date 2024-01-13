@@ -1,7 +1,7 @@
-import { PickType } from '@nestjs/mapped-types'
+import { ApiProperty, PickType } from '@nestjs/swagger'
 import { IsEmail } from 'class-validator'
 import { CreateUserDto } from 'src/resources/users/dto/create-user.dto'
 
-export class AuthDto extends PickType(CreateUserDto, ['password']) { 
-    @IsEmail() email: string
+export class AuthDto extends PickType(CreateUserDto, ['password']) {
+    @ApiProperty({ example: 'thiago@email.com' }) @IsEmail() email: string
 }

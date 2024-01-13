@@ -4,11 +4,16 @@ import { JwtService } from '@nestjs/jwt'
 import * as bcrypt from 'bcrypt'
 import { AuthDto } from './auth.dto'
 import { UsersService } from 'src/resources/users/users.service'
+import { ApiProperty } from '@nestjs/swagger'
 
 export interface JwtPayload {
   id: string,
   email: string,
   name: string
+}
+
+export class AuthResponse {
+  @ApiProperty({ example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjlmMTQzZWRhLTNiNzgtNGQ1Zi04NjhkLWJlZDA2N2Y4OTc4MiIsImVtYWlsIjoidGhpYWdvOUBlbWFpbC5jb20iLCJuYW1lIjoiVGhpYWdvIEVsaWFzIiwiaWF0IjoxNzA1MTY2MDMwLCJleHAiOjE3MDU0MjUyMzB9.RNuX0GyDcWxRsMHs7eholA_jKeWeGbuo_14vsKPMe-s', description: 'Personal token for protected routes access' }) accessToken: string
 }
 
 @Injectable()
