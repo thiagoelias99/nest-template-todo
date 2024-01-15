@@ -2,7 +2,7 @@ import { Body, Controller, Get, Param, Patch, Post, Req, UseGuards } from '@nest
 import { UsersService } from './users.service'
 import { CreateUserDto } from './dto/create-user.dto'
 import { HashPasswordPipe } from './pipes/hash-password.pipe'
-import { AuthGuard, UserRequest } from 'src/guards/auth.guard'
+import { AuthGuard, UserRequest } from '../../guards/auth.guard'
 import { UpdateUserDto } from './dto/update-user.dto'
 import { ApiBearerAuth, ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
 import { User } from './entities/user.entity'

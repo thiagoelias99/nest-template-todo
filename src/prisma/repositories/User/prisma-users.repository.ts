@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common'
-import { PrismaService } from 'src/prisma/prisma-service.ts'
-import { CreateUserDto } from 'src/resources/users/dto/create-user.dto'
-import { User } from 'src/resources/users/entities/user.entity'
-import { UsersRepository } from 'src/resources/users/users.repository'
+import { PrismaService } from '../../prisma-service.ts'
+import { CreateUserDto } from '../../../resources/users/dto/create-user.dto.js'
+import { User } from '../../../resources/users/entities/user.entity'
+import { UsersRepository } from '../../../resources/users/users.repository'
 import { findByEmailQuery } from './find-by-email'
 import { createUserQuery } from './create-user'
 import { getProfileQuery } from './get-profile'
-import { UpdateUserDto } from 'src/resources/users/dto/update-user.dto'
+import { UpdateUserDto } from '../../../resources/users/dto/update-user.dto'
 import { updateProfileQuery } from './update-profile'
 
 @Injectable()

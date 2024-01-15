@@ -1,7 +1,7 @@
 import { InternalServerErrorException } from '@nestjs/common'
-import { UserAddress } from 'src/resources/users/entities/user-address.entity'
-import { User } from 'src/resources/users/entities/user.entity'
-import { UserPreference } from 'src/resources/users/entities/user.preference.entity'
+import { UserAddress } from '../../../../resources/users/entities/user-address.entity'
+import { User } from '../../../../resources/users/entities/user.entity'
+import { UserPreference } from '../../../../resources/users/entities/user.preference.entity'
 
 export function userToEntityDto(userFromDb: any): User {
   try {

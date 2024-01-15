@@ -3,7 +3,7 @@ import { JwtService } from '@nestjs/jwt'
 
 import * as bcrypt from 'bcrypt'
 import { AuthDto } from './auth.dto'
-import { UsersService } from 'src/resources/users/users.service'
+import { UsersService } from '../users/users.service'
 import { ApiProperty } from '@nestjs/swagger'
 
 export interface JwtPayload {
