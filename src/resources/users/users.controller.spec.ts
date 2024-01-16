@@ -98,7 +98,7 @@ describe('UsersController', () => {
 
   it('should be defined', () => {
     expect(usersController).toBeDefined()
-    expect(usersController).toBeDefined()
+    expect(usersService).toBeDefined()
   })
 
   describe('signup', () => {
