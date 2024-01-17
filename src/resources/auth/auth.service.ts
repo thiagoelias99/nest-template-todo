@@ -39,6 +39,8 @@ export class AuthService {
       name: `${user.firstName} ${user.lastName}`
     }
 
-    return { accessToken: await this.jwtService.sign(payload) }
+    const accessToken = await this.jwtService.sign(payload)
+
+    return { accessToken }
   }
 }

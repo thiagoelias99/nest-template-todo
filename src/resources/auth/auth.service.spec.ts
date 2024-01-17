@@ -12,7 +12,7 @@ import * as bcrypt from 'bcrypt'
 
 const userPassword = '123456Ab@'
 const userEmail = 'test@email.com'
-const salt = '$2b$10$cCv4vrCjW01BEdcCJWouaO'
+const salt = '\$2b\$10\$cCv4vrCjW01BEdcCJWouaO'
 
 const userResponseData: User = {
   id: '1',
@@ -68,8 +68,10 @@ describe('Auth Service', () => {
         }),
         JwtModule.registerAsync({
           useFactory: (configService: ConfigService) => {
+            console.log(configService.get<string>('NODE_ENV'))
+            console.log(configService.get<string>('JWT_SECRET'))
             return {
-              secret: configService.get<string>('JWT_SECRET'),
+              secret: configService.get<string>('JWT_SECRET') || 'secret',
               signOptions: { expiresIn: '72h' },
             }
           },
