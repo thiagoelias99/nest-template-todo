@@ -5,7 +5,7 @@ export async function updateProfileQuery(userId: string, data: UpdateUserDto, pr
   const { city, country, state, ...rest } = data
   const { theme, language, ...user } = rest
 
-  await prima.user.update({
+  const userFromDb = await prima.user.update({
     where: { id: userId },
     data: {
       ...user,
@@ -24,4 +24,6 @@ export async function updateProfileQuery(userId: string, data: UpdateUserDto, pr
       }
     }
   })
+
+  return userFromDb.id
 }

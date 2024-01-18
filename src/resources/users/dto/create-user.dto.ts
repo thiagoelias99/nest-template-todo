@@ -12,7 +12,7 @@ export class CreateUserDto {
     {
       message: 'Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and be between 8 and 30 characters long.'
     }) @ApiProperty({ example: '123456aB#' }) password: string
-  @IsDateString() @ApiProperty({ example: '1989-05-09T17:57:34.000Z' }) birthday: Date
+  @IsDateString() @ApiProperty({ example: '1989-05-09T17:57:34.000Z' }) birthDate: Date
 
   @IsString() @ApiProperty({ example: 'Brazil' }) country: string
   @IsString() @ApiProperty({ example: 'São José dos Campos' }) city: string
@@ -20,4 +20,22 @@ export class CreateUserDto {
 
   @IsEnum(UserPreferenceLanguage) @ApiProperty({ example: 'pt-br', enum: UserPreferenceLanguage }) language: string
   @IsEnum(UserPreferenceTheme) @IsOptional() @ApiProperty({ example: 'dark', enum: UserPreferenceTheme, default: 'default' }) theme?: string
+
+  private static hashedPassword = 'asdh783dgasyd67atsd67atsd8as9dtas8'
+
+  public static mock(): CreateUserDto {
+    const data = {
+      email: 'thiago@email.com',
+      firstName: 'Thiago',
+      lastName: 'Elias',
+      password: CreateUserDto.hashedPassword,
+      birthDate: new Date('1989-05-09T17:57:34.000Z'),
+      country: 'Brazil',
+      city: 'São José dos Campos',
+      state: 'São Paulo',
+      language: 'pt-br',
+      theme: 'dark'
+    }
+    return Object.assign(new CreateUserDto(), data)
+  }
 }

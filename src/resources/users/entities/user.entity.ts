@@ -9,7 +9,7 @@ export class User {
   @ApiProperty({ example: 'Elias' }) lastName: string
   @ApiProperty({ example: 'thiago@email.com' }) email: string
   @Exclude() password: string //Needs to use ClassSerializerInterceptor in app.module.ts
-  @ApiProperty({ example: new Date().toISOString() }) birthday: Date
+  @ApiProperty({ example: new Date().toISOString() }) birthDate: Date
   @ApiProperty({ example: new Date().toISOString() }) createdAt: Date
   @ApiProperty({ example: new Date().toISOString() }) updatedAt: Date
 

@@ -41,3 +41,4 @@ dev.db
 .env.test
 prisma/test.db
 prisma/test.db-journal
+prisma/dev.db-journal

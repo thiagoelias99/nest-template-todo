@@ -19,7 +19,7 @@ const userResponseData: User = {
   email: userEmail,
   firstName: 'Thiago',
   lastName: 'Elias',
-  birthday: new Date('1989-05-09T17:57:34.000Z'),
+  birthDate: new Date('1989-05-09T17:57:34.000Z'),
   password: userPassword,
   createdAt: new Date('2021-05-09T17:57:34.000Z'),
   updatedAt: new Date('2021-05-09T17:57:34.000Z'),
