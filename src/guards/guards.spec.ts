@@ -9,7 +9,7 @@ import { faker } from '@faker-js/faker'
 import { JwtPayload } from 'src/resources/auth/auth.service'
 import { JwtService } from '@nestjs/jwt'
 
-@Controller('tests')
+@Controller('tests/guards')
 class TestsController {
 
   @Post()
@@ -60,7 +60,7 @@ describe('Guards Integration Tests', () => {
       const accessToken = await jwtService.sign(payload)
       // Act & Assert
       const response = await request(app.getHttpServer())
-        .post('/tests')
+        .post('/tests/guards')
         .set('Authorization', `Bearer ${accessToken}`)
         .expect(201)
 
@@ -70,7 +70,7 @@ describe('Guards Integration Tests', () => {
     it('should return error if no token is provided', async () => {
       // Act & Assert
       const response = await request(app.getHttpServer())
-        .post('/tests')
+        .post('/tests/guards')
         .expect(401)
 
       expect(response.body.message).toEqual(tokenErrorMessage)
@@ -79,7 +79,7 @@ describe('Guards Integration Tests', () => {
     it('should return error if invalid token is provided', async () => {
       // Act & Assert
       const response = await request(app.getHttpServer())
-        .post('/tests')
+        .post('/tests/guards')
         .set('Authorization', `Bearer ${invalidToken}`)
         .expect(401)
 
@@ -89,7 +89,7 @@ describe('Guards Integration Tests', () => {
     it('should return error if no Bearer token is provided', async () => {
       // Act & Assert
       const response = await request(app.getHttpServer())
-        .post('/tests')
+        .post('/tests/guards')
         .set('Authorization', `${invalidToken}`)
         .expect(401)
 
