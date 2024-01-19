@@ -15,6 +15,7 @@ export class UniqueEmailValidator implements ValidatorConstraintInterface {
 
   async validate(
     value: any,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     validationArguments?: ValidationArguments,
   ): Promise<boolean> {
     try {

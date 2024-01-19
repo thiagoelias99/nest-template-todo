@@ -1,10 +1,9 @@
 import { Test } from '@nestjs/testing'
-import { PrismaUserRepository } from './prisma-users.repository'
-import { PrismaService } from '../../prisma-service.ts'
-import { UsersRepository } from '../../../resources/users/users.repository'
-import { CreateUserDto } from '../../../resources/users/dto/create-user.dto'
-import exp from 'node:constants'
-import { UpdateUserDto } from 'src/resources/users/dto/update-user.dto'
+import { PrismaUserRepository } from '../../prisma/repositories/User/prisma-users.repository'
+import { PrismaService } from '../../prisma/prisma-service.ts'
+import { UsersRepository } from './users.repository'
+import { CreateUserDto } from './dto/create-user.dto'
+import { UpdateUserDto } from './dto/update-user.dto'
 
 describe('PrismaUserRepository', () => {
   let userRepository: UsersRepository

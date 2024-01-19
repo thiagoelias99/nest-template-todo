@@ -2,57 +2,11 @@ import { Test } from '@nestjs/testing'
 import { UsersService } from './users.service'
 import { CreateUserDto } from './dto/create-user.dto'
 import { User } from './entities/user.entity'
-import { UserPreferenceLanguage, UserPreferenceTheme } from './entities/user.preference.entity'
 import { UsersRepository } from './users.repository'
 
-const hashedPassword = 'asdh783dgasyd67atsd67atsd8as9dtas8'
+const signupData: CreateUserDto = CreateUserDto.mock()
 
-const signupData: CreateUserDto = {
-  email: 'thiago@email.com',
-  firstName: 'Thiago',
-  lastName: 'Elias',
-  password: hashedPassword,
-  birthDate: new Date('1989-05-09T17:57:34.000Z'),
-  country: 'Brazil',
-  city: 'São José dos Campos',
-  state: 'São Paulo',
-  language: 'pt-br',
-  theme: 'dark'
-}
-
-const responseData: User = {
-  id: '1',
-  email: 'thiago@email.com',
-  firstName: 'Thiago',
-  lastName: 'Elias',
-  birthDate: new Date('1989-05-09T17:57:34.000Z'),
-  password: hashedPassword,
-  createdAt: new Date('2021-05-09T17:57:34.000Z'),
-  updatedAt: new Date('2021-05-09T17:57:34.000Z'),
-  address: {
-    id: '1',
-    country: 'Brazil',
-    city: 'São José dos Campos',
-    state: 'São Paulo',
-    createdAt: new Date('2021-05-09T17:57:34.000Z'),
-    updatedAt: new Date('2021-05-09T17:57:34.000Z')
-  },
-  preferences: {
-    id: '1',
-    language: UserPreferenceLanguage.PT_BR,
-    theme: UserPreferenceTheme.DARK,
-    createdAt: new Date('2021-05-09T17:57:34.000Z'),
-    updatedAt: new Date('2021-05-09T17:57:34.000Z')
-  }
-}
-
-const userRequestData = {
-  user: {
-    id: '1',
-    name: 'Thiago Elias',
-    email: 'thiagoelias99@gmail.com'
-  }
-}
+const responseData: User = User.mock()
 
 describe('UsersService', () => {
   let usersService: UsersService

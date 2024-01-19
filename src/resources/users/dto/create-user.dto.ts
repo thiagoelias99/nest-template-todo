@@ -2,6 +2,8 @@ import { IsDateString, IsEmail, IsEnum, IsOptional, IsString, Matches } from 'cl
 import { UniqueEmail } from '../validators/unique-email.validator'
 import { UserPreferenceLanguage, UserPreferenceTheme } from '../entities/user.preference.entity'
 import { ApiProperty } from '@nestjs/swagger'
+import { faker } from '@faker-js/faker'
+import { User } from '../entities/user.entity'
 
 export class CreateUserDto {
   @IsEmail() @UniqueEmail() @ApiProperty({ example: 'thiago@email.com' }) email: string
@@ -21,18 +23,17 @@ export class CreateUserDto {
   @IsEnum(UserPreferenceLanguage) @ApiProperty({ example: 'pt-br', enum: UserPreferenceLanguage }) language: string
   @IsEnum(UserPreferenceTheme) @IsOptional() @ApiProperty({ example: 'dark', enum: UserPreferenceTheme, default: 'default' }) theme?: string
 
-  private static hashedPassword = 'asdh783dgasyd67atsd67atsd8as9dtas8'
 
   public static mock(): CreateUserDto {
     const data = {
-      email: 'thiago@email.com',
-      firstName: 'Thiago',
-      lastName: 'Elias',
-      password: CreateUserDto.hashedPassword,
-      birthDate: new Date('1989-05-09T17:57:34.000Z'),
-      country: 'Brazil',
-      city: 'São José dos Campos',
-      state: 'São Paulo',
+      email: faker.internet.email(),
+      firstName: faker.person.firstName(),
+      lastName: faker.person.lastName(),
+      password: User.userPasswordMock(),
+      birthDate: new Date(faker.date.birthdate({ min: 18, max: 65, mode: 'age' })),
+      country: faker.location.country(),
+      city: faker.location.city(),
+      state: faker.location.state(),
       language: 'pt-br',
       theme: 'dark'
     }

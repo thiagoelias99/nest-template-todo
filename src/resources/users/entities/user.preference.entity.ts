@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger'
 import { Exclude } from 'class-transformer'
+import { faker } from '@faker-js/faker'
 
 export enum UserPreferenceLanguage {
   EN = 'en',
@@ -21,5 +22,16 @@ export class UserPreference {
 
   constructor(data: UserPreference) {
     Object.assign(this, data)
+  }
+
+  public static mock(): UserPreference {
+    const data = {
+      language: UserPreferenceLanguage.PT_BR,
+      theme: UserPreferenceTheme.DARK,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      id: faker.string.uuid()
+    }
+    return data as UserPreference
   }
 }

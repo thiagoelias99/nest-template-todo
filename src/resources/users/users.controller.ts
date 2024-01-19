@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Patch, Post, Req, UseGuards } from '@nestjs/common'
+import { Body, Controller, Get, Patch, Post, Req, UseGuards } from '@nestjs/common'
 import { UsersService } from './users.service'
 import { CreateUserDto } from './dto/create-user.dto'
 import { HashPasswordPipe } from './pipes/hash-password.pipe'
@@ -20,7 +20,7 @@ export class UsersController {
     type: User,
   })
   async create(
-    @Body() { password, ...data }: CreateUserDto,
+    @Body() data: CreateUserDto,
     @Body('password', HashPasswordPipe) hashedPassword: string
   ) {
     return this.usersService.create({ ...data, password: hashedPassword })

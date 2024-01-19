@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger'
 import { Exclude } from 'class-transformer'
-import { randomUUID } from 'node:crypto'
+import { faker } from '@faker-js/faker'
 
 export class UserAddress {
   @ApiProperty({ example: 'Brazil' }) country: string
@@ -16,12 +16,12 @@ export class UserAddress {
 
   public static mock(): UserAddress {
     const data = {
-      country: 'Brazil',
-      city: 'São José dos Campos',
-      state: 'São Paulo',
-      createdAt: new Date('2021-05-09T17:57:34.000Z'),
-      updatedAt: new Date('2021-05-09T17:57:34.000Z'),
-      id: randomUUID()
+      country: faker.location.country(),
+      city: faker.location.city(),
+      state: faker.location.state(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      id: faker.string.uuid()
     }
     return data as UserAddress
   }

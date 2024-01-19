@@ -61,7 +61,7 @@ describe('AppController (e2e)', () => {
     })
 
     it('should reply if credential are valid', async () => {
-      const response = await request(app.getHttpServer())
+      await request(app.getHttpServer())
         .post('/login')
         .send({
           email: 'thiago@email.com',
