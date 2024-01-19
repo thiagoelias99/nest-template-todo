@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Patch, Post, Req, UseGuards } from '@nestjs/common'
 import { UsersService } from './users.service'
 import { CreateUserDto } from './dto/create-user.dto'
-import { HashPasswordPipe } from './pipes/hash-password.pipe'
+import { HashPasswordPipe } from '../../pipes/hash-password.pipe'
 import { AuthGuard, UserRequest } from '../../guards/auth.guard'
 import { UpdateUserDto } from './dto/update-user.dto'
 import { ApiBearerAuth, ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
