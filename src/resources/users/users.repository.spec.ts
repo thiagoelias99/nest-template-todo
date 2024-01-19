@@ -5,7 +5,7 @@ import { UsersRepository } from './users.repository'
 import { CreateUserDto } from './dto/create-user.dto'
 import { UpdateUserDto } from './dto/update-user.dto'
 
-describe('PrismaUserRepository', () => {
+describe('Users Repository', () => {
   let userRepository: UsersRepository
 
   beforeEach(async () => {
