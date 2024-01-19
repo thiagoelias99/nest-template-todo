@@ -22,7 +22,8 @@ describe('UsersService', () => {
             create: jest.fn().mockResolvedValue('1'),
             findByEmail: jest.fn().mockResolvedValue(responseData),
             getProfile: jest.fn().mockResolvedValue(responseData),
-            updateProfile: jest.fn().mockResolvedValue(responseData)
+            updateProfile: jest.fn().mockResolvedValue(responseData),
+            deleteById: jest.fn().mockResolvedValue(undefined),
           },
         },
       ],
@@ -145,6 +146,32 @@ describe('UsersService', () => {
       expect(userRepository.updateProfile).toHaveBeenCalledWith('1', signupData)
       expect(userRepository.updateProfile).toHaveBeenCalledTimes(1)
       expect(userRepository.updateProfile).toHaveReturnedTimes(1)
+    })
+  })
+
+  describe('delete', () => {
+    it('should delete a user', async () => {
+      //Act
+      const result = await usersService.delete('1')
+      //Assert
+      expect(result).toEqual(undefined)
+      expect(userRepository.deleteById).toHaveBeenCalledWith('1')
+      expect(userRepository.deleteById).toHaveBeenCalledTimes(1)
+      expect(userRepository.deleteById).toHaveReturnedTimes(1)
+    })
+
+    it('should throw an error when repository fails', () => {
+      //Arrange
+      jest.spyOn(userRepository, 'deleteById').mockRejectedValueOnce(new Error())
+      // Act & Assert
+      expect(
+        usersService.delete('1'))
+        .rejects
+        .toThrow(Error)
+
+      expect(userRepository.deleteById).toHaveBeenCalledWith('1')
+      expect(userRepository.deleteById).toHaveBeenCalledTimes(1)
+      expect(userRepository.deleteById).toHaveReturnedTimes(1)
     })
   })
 })

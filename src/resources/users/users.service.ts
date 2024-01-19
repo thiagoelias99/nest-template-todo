@@ -24,4 +24,8 @@ export class UsersService {
     await this.userRepository.updateProfile(userId, data)
     return this.userRepository.getProfile(userId)
   }
+
+  async delete(userId: string) {
+    return this.userRepository.deleteById(userId)
+  }
 }
