@@ -20,12 +20,10 @@ export class AuthGuard implements CanActivate {
     try {
       const payload: JwtPayload = await this.jwtService.verifyAsync(token)
       request.user = payload
+      return true
     } catch (error) {
-      console.error(error)
       throw new UnauthorizedException('Invalid JWT token')
     }
-
-    return true
   }
 
   private extractTokenFromHeader(request: Request): string | undefined {
