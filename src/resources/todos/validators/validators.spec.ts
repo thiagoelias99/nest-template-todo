@@ -61,7 +61,7 @@ describe('User Validator Tests', () => {
     // Assert
     expect(response.body).toHaveProperty('message')
     // Clean Up
-    await todosService.deleteById(createdTodo)
+    await todosService.deleteById(createdTodo.id)
   })
 
   it('should fail if todo id not exists', async () => {

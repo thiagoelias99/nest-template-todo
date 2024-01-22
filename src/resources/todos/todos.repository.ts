@@ -1,5 +1,4 @@
 import { CreateTodoDto } from './dto/create-todo.dto'
-import { DeleteTodoDto } from './dto/delete-todo.dto'
 import { UpdateTodoDto } from './dto/update-todo.dto'
 import { ToDo, ToDoList } from './todos.entity'
 
@@ -8,5 +7,5 @@ export abstract class TodosRepository {
   abstract findById(id: string): Promise<ToDo | null>
   abstract findAll(userId: string): Promise<ToDoList>
   abstract update(data: UpdateTodoDto): Promise<ToDo>
-  abstract deleteById(id: DeleteTodoDto): Promise<void>
+  abstract deleteById(id: string): Promise<void>
 }

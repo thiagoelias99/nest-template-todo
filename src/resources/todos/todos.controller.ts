@@ -7,6 +7,7 @@ import { CreateTodoDto } from './dto/create-todo.dto'
 import { AuthGuard, UserRequest } from '../../guards/auth.guard'
 import { DeleteTodoDto } from './dto/delete-todo.dto'
 import { UpdateTodoDto } from './dto/update-todo.dto'
+import { TodoOwnerGuard } from '../../guards/todo-owner.guard'
 
 @Controller('todos')
 @ApiTags('Todo')
@@ -43,7 +44,7 @@ export class TodosController {
 
   @Patch()
   @UseGuards(AuthGuard)
-  // @UseGuards(TodoOwnerGuard)
+  @UseGuards(TodoOwnerGuard)
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Update a todo' })
   @ApiResponse({
@@ -57,7 +58,7 @@ export class TodosController {
 
   @Delete()
   @UseGuards(AuthGuard)
-  // @UseGuards(TodoOwnerGuard)
+  @UseGuards(TodoOwnerGuard)
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Delete a todo' })
   @ApiResponse({
@@ -65,6 +66,6 @@ export class TodosController {
     description: 'Success',
   })
   async delete(@Body() data: DeleteTodoDto) {
-    return this.todosService.deleteById(data)
+    return this.todosService.deleteById(data.id)
   }
 }

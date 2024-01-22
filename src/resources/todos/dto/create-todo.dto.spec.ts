@@ -64,7 +64,6 @@ describe('CreateTodoDto Integration Tests', () => {
       .send(createData)
       .expect(200)
     // Assert
-    console.log(response.body)
     expect(response.body).toEqual({ ...createData, date: new Date(createData.date).toISOString() })
   })
 

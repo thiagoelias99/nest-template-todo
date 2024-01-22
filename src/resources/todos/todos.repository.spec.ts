@@ -36,7 +36,6 @@ describe('Todos Repository', () => {
 
   afterAll(async () => {
     //Delete the user associated with the todo
-    console.log('Deleting user with id: ', userId)
     await userRepository.deleteById(userId)
   })
 
@@ -81,7 +80,6 @@ describe('Todos Repository', () => {
       //Act
       const todoFound = await todosRepository.findById(todoId)
       //Assert
-      console.log('todoFound: ', todoFound)
       expect(todoFound).toBeTruthy()
       expect(todoFound.id).toBe(todoId)
       expect(todoFound.title).toBe(mockTodo.title)

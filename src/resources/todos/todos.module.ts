@@ -11,5 +11,6 @@ import { TodoExistsValidator } from './validators/todo-exists.validator'
     TodosService,
     TodoExistsValidator
   ],
+  exports: [TodosService]
 })
 export class TodosModule {}

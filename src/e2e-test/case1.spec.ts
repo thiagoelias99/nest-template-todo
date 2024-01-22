@@ -108,7 +108,6 @@ describe('Case 1 - E2E', () => {
       .send(updatedUser)
       .expect(200)
     // Assert
-    console.log(response.body)
     expect(response.body).toHaveProperty('id')
   })
 

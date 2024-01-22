@@ -3,7 +3,6 @@ import { CreateTodoDto } from './dto/create-todo.dto'
 import { TodosRepository } from './todos.repository'
 import { ToDo, ToDoList } from './todos.entity'
 import { UpdateTodoDto } from './dto/update-todo.dto'
-import { DeleteTodoDto } from './dto/delete-todo.dto'
 
 @Injectable()
 export class TodosService {
@@ -26,7 +25,7 @@ export class TodosService {
     return this.repository.update(data)
   }
 
-  async deleteById(id: DeleteTodoDto): Promise<void> {
+  async deleteById(id: string): Promise<void> {
     return this.repository.deleteById(id)
   }
 
