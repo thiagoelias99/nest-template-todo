@@ -5,7 +5,9 @@ import { createTodoQuery } from './create-todo'
 import { Injectable } from '@nestjs/common'
 import { deleteTodoQuery } from './delete-todo'
 import { getTodoByIdQuery } from './get-by-id'
-import { ToDo } from '../../../resources/todos/todos.entity'
+import { ToDo, ToDoList } from '../../../resources/todos/todos.entity.js'
+import { UpdateTodoDto } from 'src/resources/todos/dto/update-todo.dto.js'
+import { DeleteTodoDto } from 'src/resources/todos/dto/delete-todo.dto.js'
 
 @Injectable()
 export class PrismaTodosRepository extends TodosRepository {
@@ -21,8 +23,15 @@ export class PrismaTodosRepository extends TodosRepository {
     return getTodoByIdQuery(id, this.prisma)
   }
 
-  async deleteById(id: string): Promise<void> {
-    await deleteTodoQuery(id, this.prisma)
+  async deleteById(data: DeleteTodoDto): Promise<void> {
+    await deleteTodoQuery(data.id, this.prisma)
     return
+  }
+
+  async findAll(userId: string): Promise<ToDoList> {
+    throw new Error('Method not implemented.')
+  }
+  async update(data: UpdateTodoDto): Promise<ToDo> {
+    throw new Error('Method not implemented.')
   }
 }

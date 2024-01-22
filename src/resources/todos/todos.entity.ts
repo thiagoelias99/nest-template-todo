@@ -31,3 +31,12 @@ export class ToDo {
     return new ToDo(data)
   }
 }
+
+export class ToDoList {
+  @ApiProperty({ type: [ToDo] }) items: ToDo[]
+  @ApiProperty({ example: 1 }) total: number
+
+  constructor(data: ToDoList) {
+    Object.assign(this, data)
+  }
+}
