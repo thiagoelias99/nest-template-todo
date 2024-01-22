@@ -3,6 +3,8 @@ import { PrismaService } from './prisma-service.ts'
 
 import { PrismaUserRepository } from './repositories/User/prisma-users.repository'
 import { UsersRepository } from '../resources/users/users.repository'
+import { TodosRepository } from '../resources/todos/todos.repository'
+import { PrismaTodosRepository } from './repositories/Todo/prisma-todos.repository.js'
 
 @Module({
   providers: [
@@ -11,6 +13,10 @@ import { UsersRepository } from '../resources/users/users.repository'
       provide: UsersRepository,
       useClass: PrismaUserRepository
     },
+    {
+      provide: TodosRepository,
+      useClass: PrismaTodosRepository
+    }
   ],
   exports: [
     PrismaService,

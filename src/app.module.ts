@@ -6,6 +6,7 @@ import { AuthModule } from './resources/auth/auth.module'
 import { JwtModule } from '@nestjs/jwt'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { APP_INTERCEPTOR } from '@nestjs/core'
+import { TodosModule } from './resources/todos/todos.module'
 
 @Module({
   imports:
@@ -24,7 +25,8 @@ import { APP_INTERCEPTOR } from '@nestjs/core'
         },
         inject: [ConfigService],
         global: true,
-      })
+      }),
+      TodosModule
     ],
   controllers: [AppController],
   providers: [

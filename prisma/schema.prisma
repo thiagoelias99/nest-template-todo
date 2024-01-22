@@ -21,6 +21,7 @@ model User {
 
   Address     UserAddress    @relation(fields: [userAddressId], references: [id])
   Preferences UserPreference @relation(fields: [userPreferenceId], references: [id])
+  ToDos       ToDo[]
 
   @@map("users")
 }
@@ -48,4 +49,19 @@ model UserPreference {
   User User[]
 
   @@map("user_preferences")
+}
+
+model ToDo {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  completed   Boolean  @default(false)
+  date        DateTime @default(now())
+  userId      String   @map("user_id")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  User User @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+  @@map("todos")
 }
