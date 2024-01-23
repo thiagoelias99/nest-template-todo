@@ -43,3 +43,4 @@ prisma/test.db
 prisma/test.db-journal
 prisma/dev.db-journal
 package-lock.json
+prisma/prod.db

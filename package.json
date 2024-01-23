@@ -8,7 +8,7 @@
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
+    "start": "node dist/main.js",
     "dev": "dotenv -e .env.development -- nest start --watch",
     "debug": "nest start --debug --watch",
     "prod": "node dist/main",
@@ -21,6 +21,7 @@
     "test:file": "dotenv -e .env.test -- prisma migrate reset --force & jest case2.spec",
     "test:file:watch": "dotenv -e .env.test -- prisma migrate reset --force & jest case2.spec --watch",
     "migrate": "dotenv -e .env.development -- npx prisma migrate dev",
+    "migrate:deploy": "npx prisma migrate deploy",
     "db:push": "dotenv -e .env.development -- npx prisma db push",
     "studio": "dotenv -e .env.development -- prisma studio"
   },

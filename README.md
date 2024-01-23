@@ -67,3 +67,17 @@ This is a template developed in [NestJs](https://nestjs.com/) with typescript fo
     - Dtos
 - End-to-end Tests
     - **Case 1**: Simulate a user registering in the system, login, get profile information's and update some of them.
+    - **Case 2**: Simulate a user registering in the system, login, creating, updating and deleting to-tos.
+
+#### Production Build and Deploy
+1. Run cmd `npm run build`
+    - This will build the project and create folder "**dist**"
+2. Create a copy and rename ***.env.sample*** to ***.env***
+3. Fill `JWT_SECRET` with some data (*string*)
+    - Example: `JWT_SECRET="THISISASECRET123"`
+4. Optionally rename the `DATABASE_URL` file name in .env.
+5. Optionally rename the `PORT` number in .env.
+6. Run cmd `npm run migrate:deploy`
+    - This will create the sqlite file (if not exists) and automatic sync the migrations.
+7. Run cmd `npm run start`
+    - This will start the server.
