@@ -24,8 +24,7 @@
     "migrate": "dotenv -e .env.development -- npx prisma migrate dev",
     "migrate:deploy": "npx prisma migrate deploy",
     "db:push": "dotenv -e .env.development -- npx prisma db push",
-    "studio": "dotenv -e .env.development -- prisma studio",
-    "postinstall": "npx @nestjs/cli build & npx prisma migrate deploy"
+    "studio": "dotenv -e .env.development -- prisma studio"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
