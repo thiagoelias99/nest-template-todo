@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Patch, Post, Req, UseGuards } from '@nestjs/common'
 import { TodosService } from './todos.service'
-import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
+import { ApiBearerAuth, ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
 
 import { ToDo, ToDoList } from './todos.entity'
 import { CreateTodoDto } from './dto/create-todo.dto'
@@ -45,7 +45,8 @@ export class TodosController {
   @Patch()
   @UseGuards(AuthGuard, TodoOwnerGuard)
   @ApiBearerAuth()
-  @ApiOperation({ summary: 'Update a todo' })
+  @ApiOperation({ summary: 'Update a todo', description: 'Only id is required, all the other fields are optionals'})
+  @ApiBody({ type: UpdateTodoDto })
   @ApiResponse({
     status: 200,
     description: 'Success',
@@ -59,6 +60,7 @@ export class TodosController {
   @UseGuards(AuthGuard, TodoOwnerGuard)
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Delete a todo' })
+  @ApiBody({ type: DeleteTodoDto })
   @ApiResponse({
     status: 200,
     description: 'Success',
