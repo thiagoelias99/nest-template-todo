@@ -43,8 +43,7 @@ export class TodosController {
   }
 
   @Patch()
-  @UseGuards(AuthGuard)
-  @UseGuards(TodoOwnerGuard)
+  @UseGuards(AuthGuard, TodoOwnerGuard)
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Update a todo' })
   @ApiResponse({
@@ -57,8 +56,7 @@ export class TodosController {
   }
 
   @Delete()
-  @UseGuards(AuthGuard)
-  @UseGuards(TodoOwnerGuard)
+  @UseGuards(AuthGuard, TodoOwnerGuard)
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Delete a todo' })
   @ApiResponse({
