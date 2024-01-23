@@ -2,7 +2,8 @@
   "name": "planner",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "Thiago Elias",
+  "homepage": "https://nest-template-todo.onrender.com/",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {

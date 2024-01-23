@@ -10,11 +10,6 @@ export class AppController {
   @Get()
   @ApiOperation({ summary: 'Read me' })
   getHello(): string {
-    // return `
-    // Welcome to the API of the project "Planner"!
-    // You can find the documentation at
-    // https://github.com/thiagoelias99/planner-nest
-    // `
     return this.appService.getHello()
   }
 }

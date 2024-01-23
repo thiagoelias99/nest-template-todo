@@ -32,6 +32,10 @@ This is a template developed in [NestJs](https://nestjs.com/) with typescript fo
 - Units, integrations and end-to-end test with [Jest](https://jestjs.io/).
 - Documentation build with [Swagger](https://swagger.io/) plugin.
 
+## Deploy
+- This api is deployed at [Render Cloud](https://render.com/) server at [https://nest-template-todo.onrender.com/](https://nest-template-todo.onrender.com/).
+- Deploy uses a stateful sqlite database that is recreated every time that server restart.
+
 ## Api Documentation
 - The api documentation can be accessed while running in development mode at [http://localhost:3000/api](http://localhost:3000/api)
 
