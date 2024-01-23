@@ -34,7 +34,7 @@ export class ToDo {
 
 export class ToDoList {
   @ApiProperty({ type: [ToDo] }) items: ToDo[]
-  @ApiProperty({ example: 1 }) total: number
+  @ApiProperty({ example: 1 }) count: number
 
   constructor(data: ToDoList) {
     Object.assign(this, data)

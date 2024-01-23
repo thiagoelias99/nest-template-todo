@@ -7,6 +7,8 @@ import { deleteTodoQuery } from './delete-todo'
 import { getTodoByIdQuery } from './get-by-id'
 import { ToDo, ToDoList } from '../../../resources/todos/todos.entity'
 import { UpdateTodoDto } from '../../../resources/todos/dto/update-todo.dto'
+import { findAllByUserQuery } from './find-all-by-user'
+import { updateTodoQuery } from './update-todo'
 
 @Injectable()
 export class PrismaTodosRepository extends TodosRepository {
@@ -28,9 +30,11 @@ export class PrismaTodosRepository extends TodosRepository {
   }
 
   async findAll(userId: string): Promise<ToDoList> {
-    throw new Error(`Method not implemented. ${userId}`)
+    return findAllByUserQuery(userId, this.prisma)
   }
+
   async update(data: UpdateTodoDto): Promise<ToDo> {
-    throw new Error(`Method not implemented. ${data.id}`)
+    await updateTodoQuery(data, this.prisma)
+    return this.findById(data.id)
   }
 }
