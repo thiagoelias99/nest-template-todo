@@ -7,6 +7,10 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
 
+  app.enableCors({
+    origin: process.env.CORS_ORIGIN?.split('||') || '',
+  })
+
   //Pipes configuration
   app.useGlobalPipes(
     new ValidationPipe({
@@ -22,7 +26,7 @@ async function bootstrap() {
     .setTitle('Planner API')
     .setDescription('The planner API description')
     .setVersion('1.0')
-    .setContact('Thiago Elias', 'https://github.com/thiagoelias99', 'thiagoelias99@gamil.com')
+    .setContact('Thiago Elias', 'https://github.com/thiagoelias99', 'thiagoelias99@gmail.com')
     .setLicense('MIT', 'https://www.mit.edu/~amini/LICENSE.md')
     .addBearerAuth()
     .build()
