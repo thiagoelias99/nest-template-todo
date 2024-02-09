@@ -10,8 +10,8 @@
 <a href="https://www.prisma.io/">
 <img src="https://img.shields.io/badge/Prisma-ORM-green?style=for-the-badge&logo=prisma" />
 </a>
-<a href="https://www.sqlite.org/">
-<img src="https://img.shields.io/badge/SQLite-Database-blue?style=for-the-badge&logo=sqlite" />
+<a href="https://www.postgresql.org/">
+  <img src="https://img.shields.io/badge/PostgreSQL-Database-brightgreen?style=for-the-badge&logo=postgresql" />
 </a>
 <a href="https://jestjs.io/">
 <img src="https://img.shields.io/badge/Jest-Testing-red?style=for-the-badge&logo=jest" />
@@ -26,15 +26,15 @@ This is a template developed in [NestJs](https://nestjs.com/) with typescript fo
 
 ### Features
 - Sign up / login using JWT.
-- Uses pipes for entry data schema validations.
+- Uses pipes for input data schema validations.
 - Uses guards for protected routes verification.
-- Uses [Prisma](https://www.prisma.io/) as ORM with sqlite database.
+- Uses [Prisma](https://www.prisma.io/) as ORM with postgres database.
 - Units, integrations and end-to-end test with [Jest](https://jestjs.io/).
 - Documentation build with [Swagger](https://swagger.io/) plugin.
 
 ## Deploy
 - This api is deployed at [Render Cloud](https://render.com/) server at [https://nest-template-todo.onrender.com/](https://nest-template-todo.onrender.com/).
-- Deploy uses a stateful sqlite database that is recreated every time that server restart.
+- It may take up to a minute for the server to wake up and come online, before responding to requests.
 
 ## Api Documentation
 - The api documentation can be accessed while running in development mode at [http://localhost:3000/api](http://localhost:3000/api)
@@ -51,15 +51,17 @@ This is a template developed in [NestJs](https://nestjs.com/) with typescript fo
 1. Create a copy and rename ***.env.sample*** to ***.env.development***
 2. Fill `JWT_SECRET` with some data (*string*)
     - Example: `JWT_SECRET="THISISASECRET123"`
-3. Run cmd `npm run db:push` for database sync.
-    - This will create the sqlite file and automatic run the migrations.
-4. Run cmd `npm run dev` to start in development mode.
+3. Fill `DATABASE_URL` with postgres sql connection string.
+    - Example: `postgresql://postgres:admin@localhost:5432/postgres`
+4. Run cmd `npm run db:push` for database sync.
+    - This will connect to database and automatic run the migrations.
+5. Run cmd `npm run dev` to start in development mode.
     - Runs default in port **localhost:3000**
 
 #### Running in test mode
 1. Create a copy and rename ***.env.sample*** to ***.env.test***
 2. Fill `JWT_SECRET` with some data (*string*)
-3. Optionally rename the `DATABASE_URL` file name in .env.test. 
+3. Fill `DATABASE_URL` with postgres sql connection string.
 4. Run cmd `npm run test` to initiate test.
 - Unit Tests
     - Controllers
@@ -71,7 +73,7 @@ This is a template developed in [NestJs](https://nestjs.com/) with typescript fo
     - Dtos
 - End-to-end Tests
     - **Case 1**: Simulate a user registering in the system, login, get profile information's and update some of them.
-    - **Case 2**: Simulate a user registering in the system, login, creating, updating and deleting to-tos.
+    - **Case 2**: Simulate a user registering in the system, login, creating, updating and deleting to-dos.
 
 #### Production Build and Deploy
 1. Run cmd `npm run build`
@@ -79,9 +81,10 @@ This is a template developed in [NestJs](https://nestjs.com/) with typescript fo
 2. Create a copy and rename ***.env.sample*** to ***.env***
 3. Fill `JWT_SECRET` with some data (*string*)
     - Example: `JWT_SECRET="THISISASECRET123"`
-4. Optionally rename the `DATABASE_URL` file name in .env.
+4. Fill `DATABASE_URL` with postgres sql connection string.
+    - Example: `postgresql://postgres:admin@localhost:5432/postgres`
 5. Optionally rename the `PORT` number in .env.
 6. Run cmd `npm run migrate:deploy`
-    - This will create the sqlite file (if not exists) and automatic sync the migrations.
+    - This will connect to the database and automatic sync the migrations.
 7. Run cmd `npm run start`
     - This will start the server.
